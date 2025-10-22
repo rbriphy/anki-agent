@@ -17,14 +17,6 @@ import argparse
 # Load environment variables
 load_dotenv()
 
-# Mobile-optimized settings
-AGENT_DECK = "AgentDeck"
-OUTPUT_DIR = Path("/sdcard/anki-agent")
-OUTPUT_DIR.mkdir(exist_ok=True)
-API_KEY = os.getenv("OPENROUTER_API_KEY")
-TEXT_MODEL = CONFIG["text_model"]
-IMAGE_MODEL = CONFIG["image_model"]
-
 # Load configuration
 try:
     with open("config.yaml", "r") as f:
@@ -33,6 +25,17 @@ except FileNotFoundError:
     # Fallback configuration for mobile
     print("Yaml not found")
     exit(1)
+
+
+# Mobile-optimized settings
+AGENT_DECK = "AgentDeck"
+OUTPUT_DIR = Path("/sdcard/anki-agent")
+OUTPUT_DIR.mkdir(exist_ok=True)
+API_KEY = os.getenv("OPENROUTER_API_KEY")
+TEXT_MODEL = CONFIG["text_model"]
+IMAGE_MODEL = CONFIG["image_model"]
+
+
 
 
 # Mobile-friendly progress indicators
