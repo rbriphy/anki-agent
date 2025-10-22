@@ -46,7 +46,7 @@ def show_progress(message):
 def check_connectivity():
     """Check if internet connection is available"""
     try:
-        requests.get("https://api.openrouter.ai", timeout=5)
+        requests.get("https://google.com", timeout=5)
         return True
     except:
         return False
