@@ -1,0 +1,18 @@
+{
+  "kanji": "携帯",
+  "kana": "けいたい",
+  "english_meaning": "cell phone",
+  "example_sentence_jp": "私は携帯を家に忘れた。",
+  "example_sentence_en": "I left my cell phone at home.",
+  "anki_format": {
+    "front": "携帯 (けいたい)",
+    "back": "cell phone. Example: 私は携帯を家に忘れた。 I left my cell phone at home.",
+    "tags": [
+      "Japanese vocabulary",
+      "kanji",
+      "N5",
+      "vocab"
+    ]
+  },
+  "image_prompt": "A modern smartphone on a clean desk with the kanji 携帯 displayed as a caption"
+}

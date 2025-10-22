@@ -1,0 +1,17 @@
+{
+  "kanji": "梅",
+  "kana": "うめ",
+  "english_meaning": "plum",
+  "example_sentence_jp": "春になると、梅の花が美しく咲く。",
+  "example_sentence_en": "In spring, plum blossoms bloom beautifully.",
+  "anki_format": {
+    "front": "梅 (うめ) — plum",
+    "back": "Meaning: plum\nExample: 春になると、梅の花が美しく咲く。 → In spring, plum blossoms bloom beautifully.",
+    "tags": [
+      "kanji",
+      "vocabulary",
+      "ume"
+    ]
+  },
+  "image_prompt": "A plum tree in spring with delicate pink blossoms (ume) blooming, bright and fresh."
+}

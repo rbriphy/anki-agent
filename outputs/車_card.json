@@ -1,0 +1,17 @@
+{
+  "kanji": "車",
+  "kana": "くるま",
+  "english_meaning": "car",
+  "example_sentence_jp": "この車はとても速い。",
+  "example_sentence_en": "This car is very fast.",
+  "anki_format": {
+    "front": "車（くるま）",
+    "back": "car. この車はとても速い。 This car is very fast.",
+    "tags": [
+      "Japanese",
+      "Noun",
+      "car"
+    ]
+  },
+  "image_prompt": "A modern car on a street, simple illustration"
+}

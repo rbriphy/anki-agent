@@ -1,0 +1,18 @@
+{
+  "kanji": "牛",
+  "kana": "うし",
+  "english_meaning": "cow",
+  "example_sentence_jp": "牧場の牛が草を食べている。",
+  "example_sentence_en": "The cow on the farm is eating grass.",
+  "anki_format": {
+    "front": "牛 (うし) — cow",
+    "back": "Meaning: cow\nReading: うし\nExample: 牧場の牛が草を食べている。",
+    "tags": [
+      "kanji:牛",
+      "noun",
+      "animal",
+      "jlpt-n5"
+    ]
+  },
+  "image_prompt": "A realistic cow in a grassy pasture with a blue sky, showing a calm farm animal (牛)."
+}

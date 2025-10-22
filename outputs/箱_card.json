@@ -1,0 +1,17 @@
+{
+  "kanji": "箱",
+  "kana": "はこ",
+  "english_meaning": "box",
+  "example_sentence_jp": "箱の中にはお菓子が入っていた。",
+  "example_sentence_en": "There were sweets inside the box.",
+  "anki_format": {
+    "front": "箱 (はこ) - box",
+    "back": "箱: 物を入れておく四角い容器。例: 箱の中にはお菓子が入っていた。",
+    "tags": [
+      "基本語彙",
+      "名詞",
+      "日常生活"
+    ]
+  },
+  "image_prompt": "A wooden or cardboard box on a table in a simple domestic setting, natural lighting"
+}
