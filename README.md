@@ -61,9 +61,10 @@ A Python application that automatically generates Japanese flashcards with AI-ge
 
 ```
 anki-agent/
-├── main.py                 # Main application
-├── config.yaml            # Configuration settings
-├── pyproject.toml         # Python project configuration
+├── main.py               # Main application
+├── mobile_main.py        # Main application tailored for android
+├── config.yaml           # Configuration settings
+├── pyproject.toml        # Python project configuration
 ├── .python-version       # Python version specification
 ├── .gitignore            # Git ignore rules
 ├── outputs/              # Generated files

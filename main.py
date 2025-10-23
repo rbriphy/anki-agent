@@ -262,10 +262,10 @@ def main():
         json.dump(card, f, ensure_ascii=False, indent=2)
 
 # Generate image
-    #img_prompt = card.get("image_prompt", f"illustration of '{word}'")
-    #img_path = OUTPUT_DIR / f"{word}_image.png"
-    #generate_image(img_prompt, img_path)
-    img_path = OUTPUT_DIR / "箱_image.png" #Note to LLM: Temporary hardcoded image path
+    img_prompt = card.get("image_prompt", f"illustration of '{word}'")
+    img_path = OUTPUT_DIR / f"{word}_image.png"
+    generate_image(img_prompt, img_path)
+    #img_path = OUTPUT_DIR / "箱_image.png" #Note to LLM: Temporary hardcoded image path
 
 
     print(f"\n✅ Saved JSON: {json_path}")
