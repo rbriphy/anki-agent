@@ -193,6 +193,8 @@ def store_image_in_anki(image_path: Path) -> str:
         
         response = requests.post(url, json=payload, timeout=30)
         response.raise_for_status()
+        print(f"Debug: response status: {response.status_code}")
+        print(f"Debug: response text: {response.text}")
         result = response.json()
         print(f"Debug: storeMediaFile result: {result}")
 
@@ -208,22 +210,25 @@ def store_image_in_anki(image_path: Path) -> str:
 def add_to_anki(card: dict, image_path: Path) -> bool:
     """Add card to Anki via AnkiConnect"""
     url = "http://localhost:8765"
-    
+
     show_progress("🧠 Adding card to Anki...")
-    
-    # First, store the image
+
+    # Load image and encode to data URL
     try:
-        anki_image_name = store_image_in_anki(image_path)
+        with open(image_path, 'rb') as f:
+            image_data = f.read()
+        image_b64 = base64.b64encode(image_data).decode('utf-8')
+        img_src = f"data:image/png;base64,{image_b64}"
     except Exception as e:
-        show_progress(f"❌ Failed to store image: {e}")
+        show_progress(f"❌ Failed to load image: {e}")
         return False
-    
+
     # Validate card data
     anki_format = card.get("anki_format", {})
     if not anki_format:
         show_progress("❌ No anki_format found in card data")
         return False
-    
+
     # Create note
     note = {
         "deckName": AGENT_DECK,
@@ -233,7 +238,7 @@ def add_to_anki(card: dict, image_path: Path) -> bool:
             "Kana": card.get("kana", ""),
             "English": card.get("english_meaning", ""),
             "Sentence": card.get("example_sentence_jp", ""),
-            "Sentence (English)": f"{card.get('example_sentence_en', '')}<br><img src='{anki_image_name}'>",
+            "Sentence (English)": f"{card.get('example_sentence_en', '')}<br><img src='{img_src}'>",
         },
         "options": {"allowDuplicate": True},
         "tags": anki_format.get("tags", []),
