@@ -194,10 +194,11 @@ def store_image_in_anki(image_path: Path) -> str:
         response = requests.post(url, json=payload, timeout=30)
         response.raise_for_status()
         result = response.json()
-        
+        print(f"Debug: storeMediaFile result: {result}")
+
         if "error" in result and result["error"]:
             raise ConnectionError(f"Anki error: {result['error']}")
-        
+
         show_progress(f"✅ Image stored: {filename}")
         return filename
         
