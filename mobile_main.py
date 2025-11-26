@@ -207,11 +207,34 @@ def store_image_in_anki(image_path: Path) -> str:
     except requests.exceptions.RequestException as e:
         raise ConnectionError(f"Failed to store image in Anki: {e}")
 
+def create_deck_if_needed(deck_name: str) -> None:
+    """Create deck in Anki if it doesn't exist"""
+    url = "http://localhost:8765"
+    payload = {
+        "action": "createDeck",
+        "version": 6,
+        "params": {"deck": deck_name}
+    }
+    try:
+        response = requests.post(url, json=payload, timeout=10)
+        response.raise_for_status()
+        result = response.json()
+        if "error" in result and result["error"]:
+            if "deck already exists" not in result["error"]:
+                show_progress(f"❌ Deck creation failed: {result['error']}")
+        else:
+            show_progress(f"✅ Deck '{deck_name}' ready")
+    except requests.exceptions.RequestException:
+        pass  # Ignore if createDeck not supported or fails
+
 def add_to_anki(card: dict, image_path: Path) -> bool:
     """Add card to Anki via AnkiConnect"""
     url = "http://localhost:8765"
 
     show_progress("🧠 Adding card to Anki...")
+
+    # Ensure deck exists
+    create_deck_if_needed(AGENT_DECK)
 
     # Load image and encode to data URL
     try:
@@ -243,25 +266,27 @@ def add_to_anki(card: dict, image_path: Path) -> bool:
         "options": {"allowDuplicate": True},
         "tags": anki_format.get("tags", []),
     }
-    
+
     try:
         payload = {
             "action": "addNote",
             "version": 6,
             "params": {"note": note}
         }
-        
+
         response = requests.post(url, json=payload, timeout=30)
         response.raise_for_status()
+        print(f"Debug: addNote response text: {response.text}")
         result = response.json()
-        
-        if "error" in result and result["error"]:
-            show_progress(f"❌ Anki error: {result['error']}")
+        print(f"Debug: addNote result: {result}")
+
+        if "error" in result and result["error"] or result.get("error"):
+            show_progress(f"❌ Anki error: {result.get('error', result)}")
             return False
-        
+
         show_progress("✅ Card added to Anki successfully!")
         return True
-        
+
     except requests.exceptions.RequestException as e:
         show_progress(f"❌ Failed to add card to Anki: {e}")
         return False
