@@ -232,7 +232,7 @@ def add_to_anki(card: dict, image_path: Path) -> bool:
             "Kana": card.get("kana", ""),
             "English": card.get("english_meaning", ""),
             "Sentence": card.get("example_sentence_jp", ""),
-            "Sentence (English)": f"{card.get('example_sentence_en', '')}<br><img src='attachment:{anki_image_name}'>",
+            "Sentence (English)": f"{card.get('example_sentence_en', '')}<br><img src='{anki_image_name}'>",
         },
         "options": {"allowDuplicate": True},
         "tags": anki_format.get("tags", []),
