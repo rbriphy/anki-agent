@@ -181,7 +181,7 @@ def store_image_in_anki(image_path: Path) -> str:
         
         image_b64 = base64.b64encode(image_data).decode('utf-8')
         
-        filename = f"anki_agent_{image_path.name}"
+        filename = f"anki_agent_{int(__import__('time').time())}_image.png"
         payload = {
             "action": "storeMediaFile",
             "version": 6,
